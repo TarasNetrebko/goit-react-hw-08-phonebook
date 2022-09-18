@@ -3,7 +3,7 @@ import {
   getContacts,
   addContactToApi,
   deleteContactFromApi,
-} from '../../servises/contactsApi';
+} from '../../servises/api';
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetch',

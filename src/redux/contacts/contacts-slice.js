@@ -15,41 +15,41 @@ const contactsSlice = createSlice({
   name: 'contacts',
   initialState,
   extraReducers: {
-    [fetchContacts.pending]: store => {
-      store.loading = true;
-      store.error = null;
+    [fetchContacts.pending]: state => {
+      state.loading = true;
+      state.error = null;
     },
-    [fetchContacts.fulfilled]: (store, { payload }) => {
-      store.loading = false;
-      store.items = payload;
+    [fetchContacts.fulfilled]: (state, { payload }) => {
+      state.loading = false;
+      state.items = payload;
     },
-    [fetchContacts.rejected]: (store, { payload }) => {
-      store.loading = false;
-      store.error = payload;
+    [fetchContacts.rejected]: (state, { payload }) => {
+      state.loading = false;
+      state.error = payload;
     },
-    [addContact.pending]: store => {
-      store.loading = true;
-      store.error = null;
+    [addContact.pending]: state => {
+      state.loading = true;
+      state.error = null;
     },
-    [addContact.fulfilled]: (store, { payload }) => {
-      store.loading = false;
-      store.items.push(payload);
+    [addContact.fulfilled]: (state, { payload }) => {
+      state.loading = false;
+      state.items.push(payload);
     },
-    [addContact.rejected]: (store, { payload }) => {
-      store.loading = false;
-      store.error = payload;
+    [addContact.rejected]: (state, { payload }) => {
+      state.loading = false;
+      state.error = payload;
     },
-    [deleteContact.pending]: store => {
-      store.loading = true;
-      store.error = null;
+    [deleteContact.pending]: state => {
+      state.loading = true;
+      state.error = null;
     },
-    [deleteContact.fulfilled]: (store, { payload }) => {
-      store.loading = false;
-      store.items = store.items.filter(item => item.id !== payload);
+    [deleteContact.fulfilled]: (state, { payload }) => {
+      state.loading = false;
+      state.items = state.items.filter(item => item.id !== payload);
     },
-    [deleteContact.rejected]: (store, { payload }) => {
-      store.loading = false;
-      store.error = payload;
+    [deleteContact.rejected]: (state, { payload }) => {
+      state.loading = false;
+      state.error = payload;
     },
   },
 });
