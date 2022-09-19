@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Form, Label, Input, Button } from './PhonebookForm.styled';
+import { Form, Label, Input } from './PhonebookForm.styled';
+import { AddButton } from 'components/Atoms/Buttons.styled';
 import { addContact } from 'redux/contacts/contacts-operations';
 
 export const PhonebookForm =() => {
@@ -47,7 +48,7 @@ export const PhonebookForm =() => {
             onChange={handleChange}
           />
           </Label>
-        <Button type="submit">Add contact</Button>
+        <AddButton type="submit">Add contact</AddButton>
       </Form>
     );
   }

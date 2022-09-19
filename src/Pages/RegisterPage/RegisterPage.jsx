@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux";
 import { userSignup } from "redux/auth/auth-operations";
+import { AddButton } from "components/Atoms/Buttons.styled";
+import { Form, LogLabel, LogInput } from "Pages/LoginPage/LoginPage.styled";
 
 export const RegisterPage = () => {
     const [name, setName] = useState("");
@@ -31,20 +33,20 @@ export const RegisterPage = () => {
     }
 
     return (
-        <form action="" onSubmit={submitHandler}>
-            <label>
-                Your name
-                <input type="text" name="name" value={name} onChange={onInputChange} />
-            </label>
-            <label >
-                Your email
-                <input type="email" name="email" value={email} onChange={onInputChange} />
-            </label>
-            <label>
-                Your password
-                <input type="password" name="password" value={password} onChange={onInputChange}/>
-            </label>
-            <button type="submit">Sign up</button>
-        </form>
+        <Form action="" onSubmit={submitHandler}>
+            <LogLabel>
+                Your name:
+                <LogInput type="text" name="name" value={name} onChange={onInputChange} />
+            </LogLabel>
+            <LogLabel >
+                Your email:
+                <LogInput type="email" name="email" value={email} onChange={onInputChange} />
+            </LogLabel>
+            <LogLabel>
+                Your password:
+                <LogInput type="password" name="password" value={password} onChange={onInputChange}/>
+            </LogLabel>
+            <AddButton type="submit">Sign up</AddButton>
+        </Form>
     )
 }

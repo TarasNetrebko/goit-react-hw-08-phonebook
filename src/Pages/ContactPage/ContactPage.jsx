@@ -4,6 +4,7 @@ import { getFilter } from "../../redux/filter/selector";
 import { PhonebookForm } from "components/PhonebookForm/PhonebookForm";
 import { Filter } from "components/Filter/Filter";
 import { PhonebookList } from "components/PhonebookList/PhonebookList";
+import { Container, ContactsContainer } from "./ContactPage.styled";
 
 export const ContactPage = () => {
     const contacts = useSelector(getContacts);
@@ -14,13 +15,15 @@ export const ContactPage = () => {
     }      
   );
     return (
-        <>
-        <PhonebookForm />
+        <Container>
+        <ContactsContainer>
           <h2>Contacts</h2>
           <Filter/>
           <PhonebookList
             contacts={filteredContacts}
             />
-        </>
+        </ContactsContainer>
+        <PhonebookForm />
+        </Container>
     )
 }

@@ -3,7 +3,12 @@ import styled from "styled-components"
 export const ContactElement = styled.div`
     display: flex;
     align-items: center;
+    border-bottom: 1px solid #000000;
 `
-export const Button = styled.button`
-    margin-left: 10px;
+export const Span = styled.span`
+    display: flex;
+    align-items: center;
+    height: 30px;
+    width: 300px;
+    margin-right: auto;
 `

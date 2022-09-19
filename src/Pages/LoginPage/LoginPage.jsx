@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux";
 import { userLogin } from "redux/auth/auth-operations";
+import { AddButton } from "components/Atoms/Buttons.styled";
+import { Form, LogLabel, LogInput } from "./LoginPage.styled";
 
 export const LoginPage = () => {
     const [email, setEmail] = useState("");
@@ -21,16 +23,16 @@ export const LoginPage = () => {
     }
 
     return (
-        <form action="" onSubmit={submitHandler}>
-            <label >
+        <Form action="" onSubmit={submitHandler}>
+            <LogLabel >
                 Your email
-                <input type="email" name="email" value={email} onChange={onInputChange} />
-            </label>
-            <label>
+                <LogInput type="email" name="email" value={email} onChange={onInputChange} />
+            </LogLabel>
+            <LogLabel>
                 Your password
-                <input type="password" name="password" value={password} onChange={onInputChange}/>
-            </label>
-            <button type="submit">Log in</button>
-        </form>
+                <LogInput type="password" name="password" value={password} onChange={onInputChange}/>
+            </LogLabel>
+            <AddButton type="submit">Log in</AddButton>
+        </Form>
     )
 }

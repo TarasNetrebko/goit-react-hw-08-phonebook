@@ -34,6 +34,10 @@ export const current = async token => {
     throw error;
   }
 };
+export const patch = async (id, contact) => {
+  const { data } = await instance.patch(`contacts/${id}`, contact);
+  return data;
+};
 export const getContacts = async () => {
   const { data } = await instance.get('contacts');
   return data;

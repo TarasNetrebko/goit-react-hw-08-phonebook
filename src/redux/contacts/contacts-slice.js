@@ -3,6 +3,7 @@ import {
   fetchContacts,
   addContact,
   deleteContact,
+  patchContact,
 } from './contacts-operations';
 
 const initialState = {
@@ -48,6 +49,27 @@ const contactsSlice = createSlice({
       state.items = state.items.filter(item => item.id !== payload);
     },
     [deleteContact.rejected]: (state, { payload }) => {
+      state.loading = false;
+      state.error = payload;
+    },
+    [patchContact.pending]: state => {
+      state.loading = true;
+      state.error = null;
+    },
+    [patchContact.fulfilled]: (state, { payload }) => {
+      state.loading = false;
+      state.items = state.items.map(item => {
+        if (item.id === payload.id) {
+          item = {
+            id: payload.id,
+            name: payload.contact.name,
+            number: payload.contact.number,
+          };
+        }
+        return item;
+      });
+    },
+    [patchContact.rejected]: (state, { payload }) => {
       state.loading = false;
       state.error = payload;
     },
