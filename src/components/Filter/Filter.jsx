@@ -1,7 +1,7 @@
-import { LabelFilter, Input } from '../PhonebookForm/PhonebookForm.styled';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFilter } from 'redux/filter/selector';
 import { changeFilter } from 'redux/filter/actions';
+import { FormLabel, FormControl } from 'react-bootstrap';
 
 export const Filter = () => {
   const dispatch = useDispatch();
@@ -9,8 +9,8 @@ export const Filter = () => {
   const onChangeFilter = (e) => {
     dispatch(changeFilter(e.target.value))
   } 
-  return <LabelFilter>
+  return <FormLabel>
     Find contacts by name
-    <Input type="text" value={filter} onChange={onChangeFilter} />
-  </LabelFilter>
+    <FormControl type="text" value={filter} onChange={onChangeFilter} />
+  </FormLabel>
 }

@@ -16,6 +16,8 @@ import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
 import PublicRoute from 'components/PublicRoute/PublicRoute';
 import { useSelector } from 'react-redux';
 import { getToken, getIsLoading } from 'redux/auth/auth-selectors';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container } from 'react-bootstrap';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -30,7 +32,8 @@ export const App = () => {
   }, [dispatch, token]);
 
   return !isLoading ? (
-    // <Suspense fallback={<h1>Loading...</h1>}>
+    <Container>
+    {/* // <Suspense fallback={<h1>Loading...</h1>}> */}
       <Routes>
       <Route path="/" element={<HomePage />}>
         <Route element={<PrivateRoute/>}>
@@ -42,6 +45,7 @@ export const App = () => {
         </Route>
         </Route>
       </Routes>
-      // </Suspense>
+      {/* // </Suspense> */}
+      </Container>
   ) : <h1>WAIT A MINUTE...</h1>;
 };

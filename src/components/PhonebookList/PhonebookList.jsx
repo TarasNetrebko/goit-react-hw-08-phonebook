@@ -1,16 +1,24 @@
-import { List, Li } from './PhonebookList.styled';
 import { ListElem } from '../ListElem/ListElem';
 import PropTypes from 'prop-types';
+import { Table } from 'react-bootstrap';
 
 export const PhonebookList = ({ contacts }) => {
   return (
-    <List>
-      {contacts.map(({ name, id, number }) => (
-        <Li key={id}>
-          <ListElem contactId={id} name={name} number={number}/>
-        </Li>
+    <Table >
+                <thead>
+                    <tr>                    
+                    <th>Name</th>
+                    <th>Number</th>
+          <th>Edit</th>
+          <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {contacts.map(({ name, id, number }) => (
+          <ListElem key={id} contactId={id} name={name} number={number}/>
       ))}
-    </List>
+                </tbody>
+    </Table>
   );
 };
 

@@ -23,7 +23,8 @@ export const NavigationLink = styled(NavLink)`
     font-size: 20px;
     font-weight: 700;
     &:hover,
-    &:focus {
+    &:focus, 
+    &:active {
         color: #36b5e7;
     }
 `

@@ -4,7 +4,7 @@ import { getFilter } from "../../redux/filter/selector";
 import { PhonebookForm } from "components/PhonebookForm/PhonebookForm";
 import { Filter } from "components/Filter/Filter";
 import { PhonebookList } from "components/PhonebookList/PhonebookList";
-import { Container, ContactsContainer } from "./ContactPage.styled";
+import { Container, Stack } from "react-bootstrap";
 
 export const ContactPage = () => {
     const contacts = useSelector(getContacts);
@@ -15,15 +15,18 @@ export const ContactPage = () => {
     }      
   );
     return (
-        <Container>
-        <ContactsContainer>
-          <h2>Contacts</h2>
+      <Container>          
+          <Stack direction="horizontal">
+          <div className="me-auto" style={{ width: '30rem' }} >
+            <Stack direction="horizontal" gap={5}>
           <Filter/>
+          </Stack>
           <PhonebookList
             contacts={filteredContacts}
             />
-        </ContactsContainer>
-        <PhonebookForm />
+          </div>
+          <PhonebookForm/>
+        </Stack>      
         </Container>
     )
 }

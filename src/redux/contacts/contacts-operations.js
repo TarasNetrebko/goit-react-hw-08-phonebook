@@ -5,6 +5,7 @@ import {
   deleteContactFromApi,
   patch,
 } from '../../servises/api';
+import Notiflix from 'notiflix';
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetch',
@@ -18,12 +19,17 @@ export const fetchContacts = createAsyncThunk(
   }
 );
 
-const isDublicate = ({ name, number }, contacts) => {
+const isDublicateName = ({ name }, contacts) => {
   const normalizedName = name.toLowerCase();
   const result = contacts.items.find(contact => {
-    return (
-      normalizedName === contact.name.toLowerCase() || number === contact.number
-    );
+    return normalizedName === contact.name.toLowerCase();
+  });
+
+  return result;
+};
+const isDublicateNumber = ({ number }, contacts) => {
+  const result = contacts.items.find(contact => {
+    return number === contact.number;
   });
 
   return result;
@@ -42,8 +48,12 @@ export const addContact = createAsyncThunk(
   {
     condition: (data, { getState }) => {
       const { contacts } = getState();
-      if (isDublicate(data, contacts.items)) {
-        alert(`${data.name} or ${data.number} is alredy exist`);
+      if (isDublicateName(data, contacts.items)) {
+        Notiflix.Notify.failure(`Name: ${data.name} is alredy exist`);
+        return false;
+      }
+      if (isDublicateNumber(data, contacts.items)) {
+        Notiflix.Notify.failure(`Number: ${data.number} is alredy exist`);
         return false;
       }
     },

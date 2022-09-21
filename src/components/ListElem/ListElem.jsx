@@ -1,4 +1,3 @@
-import { ContactElement, Span } from './ListElem.styled';
 import { ListButtonDelete, ListButtonPatch } from 'components/Atoms/Buttons.styled';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/contacts/contacts-operations';
@@ -14,25 +13,24 @@ export const ListElem = ({ contactId, name, number }) => {
     setWantToPatch(bool);
   };
   return (
-    <ContactElement>
-      <Span>
-        {name}: {number}
-      </Span>
+    <tr>
+      <td>{name}</td>
+      <td>{number}</td>
       {wantToPatch ? (
-        <PatchForm id={contactId} wantToPatch={patchHandler} />
+        <td><PatchForm id={contactId} wantToPatch={patchHandler} contactName={name} contactNumber={number} /></td>
       ) : (
-        <ListButtonPatch type="button" onClick={() => patchHandler(true)}>
-          Patch
-        </ListButtonPatch>
+        <td><ListButtonPatch type="button" onClick={() => patchHandler(true)}>
+          Edit
+        </ListButtonPatch></td>
       )}
-      {!wantToPatch && <ListButtonDelete
+      {!wantToPatch && <td><ListButtonDelete
         type="button"
         id={name}
         onClick={() => dispatch(deleteContact(contactId))}
       >
         Delete
-      </ListButtonDelete> }
-    </ContactElement>
+      </ListButtonDelete></td> }
+    </tr>
   );
 };
 
